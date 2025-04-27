@@ -1,5 +1,5 @@
 export interface Player {
-  rank: number;
+  rank: number | string;
   username: string;
   level: number;
   xp: number;

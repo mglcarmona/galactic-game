@@ -1,4 +1,4 @@
-import { h, FunctionComponent } from "preact";
+import { FunctionComponent } from "preact";
 import { useEffect, useState } from "preact/hooks";
 
 interface LazyProps {
@@ -17,7 +17,6 @@ export const Lazy: FunctionComponent<LazyProps> = ({ loader }) => {
   }, [loader]);
 
   if (!Component) {
-    console.log("Loading...");
     return <div>Cargando...</div>;
   }
 
