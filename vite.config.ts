@@ -5,8 +5,6 @@ import { terser } from "rollup-plugin-terser";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
 
-import { visualizer } from "rollup-plugin-visualizer";
-
 export default defineConfig({
   plugins: [
     tailwindcss(),
@@ -34,7 +32,6 @@ export default defineConfig({
         ],
       },
     }),
-    visualizer(),
   ],
   build: {
     target: "es2017",
