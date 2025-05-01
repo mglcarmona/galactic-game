@@ -12,7 +12,7 @@ export const usePagination = <T>(
     const start = (page - 1) * size;
     const end = start + size;
     return data.slice(start, end);
-  }, [JSON.stringify(data), page, size]);
+  }, [data, page, size]);
 
   const total = data.length;
 

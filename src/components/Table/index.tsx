@@ -1,10 +1,12 @@
 import { FunctionComponent } from "preact";
 import { ColumnWidth, TableHeader, Td, Th, Tr } from "./components";
 import { memo } from "preact/compat";
+import { formatToUSD } from "../../utils/formatToUSD";
 
 export enum ColumnType {
   Numeric = "Numeric",
   String = "String",
+  Currency = "Currency",
 }
 
 export type Column = {
@@ -26,6 +28,8 @@ const renderField = (data: Record<string, any>, column: Column) => {
   switch (column.type) {
     case ColumnType.Numeric:
       return value.toLocaleString();
+    case ColumnType.Currency:
+      return formatToUSD(value);
     default:
       return value;
   }
@@ -36,7 +40,7 @@ export const Table: FunctionComponent<TableProps> = memo((props) => {
   console.log("render");
   return (
     <div class="overflow-x-auto w-full">
-      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <table class="w-full text-sm text-left rtl:text-right text-gray-400">
         <TableHeader>
           <tr>
             {columns?.map((column) => (

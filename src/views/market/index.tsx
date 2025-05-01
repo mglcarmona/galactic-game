@@ -1,8 +1,12 @@
+import { Table } from "../../components/Table";
+import { columns, useMarket } from "./model";
+
 const Market = () => {
+  const { data } = useMarket();
+
   return (
-    <div>
-      <h1>Market</h1>
-      <p>Coming soon...</p>
+    <div className="flex flex-col gap-3 items-center w-full">
+      <Table columns={columns} data={data} />
     </div>
   );
 };

@@ -1,0 +1,44 @@
+.toggle-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  border-radius: 50px;
+  background-color: #4c44a5;
+  height: 50px;
+  border: 4px solid #4c44a5;
+  overflow: hidden;
+}
+
+.toggle-option {
+  flex: 1;
+  background: transparent;
+  border: none;
+  z-index: 1;
+  font-weight: 500;
+  color: #8e88e1;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.toggle-option.active {
+  color: white;
+  font-weight: bold;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  background-color: #8e88e1;
+  border-radius: 50px;
+  z-index: 0;
+  transform: translateX(0);
+  transition: transform 0.3s cubic-bezier(0.68,-0.55,0.27,1.55);
+}
+
+.toggle-container[data-state="right"] .slider {
+  transform: translateX(100%);
+}
+

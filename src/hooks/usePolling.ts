@@ -1,10 +1,13 @@
 import { useEffect, useState, useRef } from "preact/hooks";
 
+const DEFAULT_POLLING_INTERVAL = 15000;
+
 export function usePolling<T>(
   fetcher: () => Promise<T>,
-  interval: number = 15000
+  interval: number = DEFAULT_POLLING_INTERVAL
 ): T | null {
-  const [data, setData] = useState<T | null>(null);
+  const [, forceRender] = useState(0);
+  const data = useRef<T | null>(null);
   const timerRef = useRef<number | null>(null);
   const lastFetchTimeRef = useRef<number | null>(null);
 
@@ -12,7 +15,11 @@ export function usePolling<T>(
     lastFetchTimeRef.current = Date.now();
     try {
       const result = await fetcher();
-      setData(result);
+      console.log("Polling...");
+      if (JSON.stringify(result) !== JSON.stringify(data.current)) {
+        data.current = result;
+        forceRender((prev) => prev + 1);
+      }
     } catch (err) {
       console.error("Polling error:", err);
     }
@@ -33,7 +40,6 @@ export function usePolling<T>(
       const currentTime = Date.now();
       const timeDiff = currentTime - (lastFetchTimeRef.current || 0);
 
-      console.log("timeDiff", timeDiff);
       if (document.visibilityState === "visible" && timeDiff >= interval) {
         fetchData();
       }
@@ -48,5 +54,5 @@ export function usePolling<T>(
     };
   }, [fetcher, interval]);
 
-  return data;
+  return data.current;
 }

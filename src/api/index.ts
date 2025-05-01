@@ -1,17 +1,33 @@
+export enum PlayerFields {
+  RANK = "rank",
+  USERNAME = "username",
+  LEVEL = "level",
+  XP = "xp",
+  GOLD = "gold",
+}
+
+export enum ItemFields {
+  ID = "id",
+  NAME = "name",
+  TYPE = "type",
+  DESCRIPTION = "description",
+  COST = "cost",
+}
+
 export interface Player {
-  rank: number | string;
-  username: string;
-  level: number;
-  xp: number;
-  gold: number;
+  [PlayerFields.RANK]: number | string;
+  [PlayerFields.USERNAME]: string;
+  [PlayerFields.LEVEL]: number;
+  [PlayerFields.XP]: number;
+  [PlayerFields.GOLD]: number;
 }
 
 export interface Item {
-  id: string;
-  name: string;
-  type: string;
-  description: string;
-  cost: number;
+  [ItemFields.ID]: string;
+  [ItemFields.NAME]: string;
+  [ItemFields.TYPE]: string;
+  [ItemFields.DESCRIPTION]: string;
+  [ItemFields.COST]: number;
 }
 
 const API_BASE_URL = "https://api-game.bloque.app/game";

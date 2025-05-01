@@ -1,14 +1,15 @@
 import { FunctionComponent } from "preact";
 import { ListItem } from "./components";
+import { getPaginationRange } from "../../utils/getPaginationRange";
 
-interface NavigationProps {
+interface PaginationProps {
   page: number;
   totalItems: number;
   pageSize: number;
   goToPage: (page: number) => void;
 }
 
-export const Navigation: FunctionComponent<NavigationProps> = ({
+export const Pagination: FunctionComponent<PaginationProps> = ({
   page,
   totalItems,
   pageSize,
@@ -27,30 +28,36 @@ export const Navigation: FunctionComponent<NavigationProps> = ({
   };
 
   return (
-    <nav aria-label="Page navigation example">
+    <nav>
       <ul className="inline-flex -space-x-px text-sm">
         <ListItem
           onClick={prev}
           isDisabled={page === 1}
           className="rounded-s-lg border-e-0"
         >
-          Previous
+          {"<"}
         </ListItem>
-        {Array.from({ length: totalPages }, (_, index) => (
-          <ListItem
-            key={index + 1}
-            onClick={() => goToPage(index + 1)}
-            isActive={page === index + 1}
-          >
-            {index + 1}
-          </ListItem>
-        ))}
+        {getPaginationRange(page, totalPages).map((item, idx) =>
+          typeof item === "number" ? (
+            <ListItem
+              key={item}
+              onClick={() => goToPage(item)}
+              isActive={page === item}
+            >
+              {item}
+            </ListItem>
+          ) : (
+            <li key={`ellipsis-${idx}`} className="px-2 py-1 text-white">
+              ...
+            </li>
+          )
+        )}
         <ListItem
           onClick={next}
           isDisabled={page === totalPages}
           className="rounded-e-lg"
         >
-          Next
+          {">"}
         </ListItem>
       </ul>
     </nav>
