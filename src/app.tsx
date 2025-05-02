@@ -8,16 +8,18 @@ export const App = () => {
   return (
     <div className="px-4 py-8 flex flex-col items-center gap-4 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold text-white">Galactic Game</h1>
-      <ToggleSwitch
-        options={[
-          { value: "/", label: "Leaderboard" },
-          { value: "/market", label: "Market" },
-        ]}
-        onChange={(value) => {
-          navigate(value);
-        }}
-        initialValue={path}
-      />
+      <div className="w-full max-w-lg">
+        <ToggleSwitch
+          options={[
+            { value: "/", label: "Leaderboard" },
+            { value: "/market", label: "Market" },
+          ]}
+          onChange={(value) => {
+            navigate(value);
+          }}
+          initialValue={path}
+        />
+      </div>
 
       {path === "/" && <Lazy loader={() => import("./views/leader-board")} />}
       {path === "/market" && <Lazy loader={() => import("./views/market")} />}

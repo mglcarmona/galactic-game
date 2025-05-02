@@ -14,6 +14,9 @@ export const columns: Column[] = [
     key: PlayerFields.LEVEL,
     type: ColumnType.Numeric,
     width: "15%",
+    render(data) {
+      return `${data[PlayerFields.LEVEL]} ${data[PlayerFields.EMOJI]}`;
+    },
   },
   {
     name: "Experience",

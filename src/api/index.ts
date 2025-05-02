@@ -4,6 +4,7 @@ export enum PlayerFields {
   LEVEL = "level",
   XP = "xp",
   GOLD = "gold",
+  EMOJI = "fishEmojis",
 }
 
 export enum ItemFields {
@@ -20,6 +21,7 @@ export interface Player {
   [PlayerFields.LEVEL]: number;
   [PlayerFields.XP]: number;
   [PlayerFields.GOLD]: number;
+  [PlayerFields.EMOJI]: string;
 }
 
 export interface Item {

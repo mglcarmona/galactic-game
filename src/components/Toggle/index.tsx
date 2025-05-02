@@ -1,5 +1,4 @@
 import { FunctionComponent } from "preact";
-import "./LeaderboardToggle.css";
 import { useState } from "preact/hooks";
 
 type ToggleValue = string;

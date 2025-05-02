@@ -1,4 +1,4 @@
-import { FunctionComponent } from "preact";
+import { ComponentChildren, FunctionComponent } from "preact";
 import { ColumnWidth, TableHeader, Td, Th, Tr } from "./components";
 import { memo } from "preact/compat";
 import { formatToUSD } from "../../utils/formatToUSD";
@@ -15,6 +15,7 @@ export type Column = {
   isMain?: boolean;
   type?: ColumnType;
   width?: ColumnWidth;
+  render?: (data: Record<string, any>) => ComponentChildren;
 };
 
 interface TableProps {
@@ -55,7 +56,9 @@ export const Table: FunctionComponent<TableProps> = memo((props) => {
             <Tr key={index}>
               {columns?.map((column) => (
                 <Td key={column.key} isMain={column.isMain}>
-                  {renderField(item, column)}
+                  {column?.render
+                    ? column.render(item)
+                    : renderField(item, column)}
                 </Td>
               ))}
             </Tr>
