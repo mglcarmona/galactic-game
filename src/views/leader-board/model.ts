@@ -9,9 +9,24 @@ import { getRankValue } from "../../utils/getRankValue";
 export const columns: Column[] = [
   { name: "Rank", key: PlayerFields.RANK, isMain: true, width: "40px" },
   { name: "Player", key: PlayerFields.USERNAME, isMain: true },
-  { name: "Level", key: PlayerFields.LEVEL, type: ColumnType.Numeric },
-  { name: "Experience", key: PlayerFields.XP, type: ColumnType.Numeric },
-  { name: "Gold", key: PlayerFields.GOLD, type: ColumnType.Currency },
+  {
+    name: "Level",
+    key: PlayerFields.LEVEL,
+    type: ColumnType.Numeric,
+    width: "15%",
+  },
+  {
+    name: "Experience",
+    key: PlayerFields.XP,
+    type: ColumnType.Numeric,
+    width: "15%",
+  },
+  {
+    name: "Gold",
+    key: PlayerFields.GOLD,
+    type: ColumnType.Currency,
+    width: "15%",
+  },
 ];
 
 export const usePlayers = () => {

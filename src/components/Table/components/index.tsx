@@ -6,7 +6,7 @@ export const TableHeader: FunctionComponent<{
   children: ComponentChildren;
 }> = ({ children }) => {
   return (
-    <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       {children}
     </thead>
   );
@@ -26,7 +26,11 @@ export const Th: FunctionComponent<{
 export const Tr: FunctionComponent<{ children: ComponentChildren }> = ({
   children,
 }) => {
-  return <tr class="border-b bg-gray-800 border-gray-700">{children}</tr>;
+  return (
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+      {children}
+    </tr>
+  );
 };
 
 export const Td: FunctionComponent<{
@@ -37,7 +41,7 @@ export const Td: FunctionComponent<{
     <th
       scope="row"
       class={`px-6 py-4 font-medium ${
-        isMain ? "whitespace-nowrap text-white" : ""
+        isMain ? "text-gray-900 whitespace-nowrap dark:text-white" : ""
       }`}
     >
       {children}

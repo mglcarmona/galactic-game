@@ -5,6 +5,8 @@ import { terser } from "rollup-plugin-terser";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
 
+const DAY_IN_SECONDS = 60 * 60 * 24;
+
 export default defineConfig({
   plugins: [
     tailwindcss(),
@@ -22,7 +24,23 @@ export default defineConfig({
               networkTimeoutSeconds: 10,
               expiration: {
                 maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24,
+                maxAgeSeconds: DAY_IN_SECONDS,
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+          {
+            urlPattern: ({ url }) =>
+              url.origin.includes("bloque.app") &&
+              url.pathname.endsWith(".svg"),
+            handler: "CacheFirst",
+            options: {
+              cacheName: "svg-cache",
+              expiration: {
+                maxEntries: 20,
+                maxAgeSeconds: DAY_IN_SECONDS * 30,
               },
               cacheableResponse: {
                 statuses: [0, 200],
