@@ -13,6 +13,10 @@ export default defineConfig({
     preact(),
     VitePWA({
       registerType: "autoUpdate",
+      manifest: {
+        name: "Galactic Game",
+        theme_color: "#675cdb",
+      },
       workbox: {
         runtimeCaching: [
           {
