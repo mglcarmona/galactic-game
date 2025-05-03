@@ -6,23 +6,26 @@ export const App = () => {
   const { path, navigate } = useNavigate();
 
   return (
-    <div className="px-4 py-8 flex flex-col items-center gap-4 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold text-white">Galactic Game</h1>
-      <div className="w-full max-w-lg">
-        <ToggleSwitch
-          options={[
-            { value: "/", label: "Leaderboard" },
-            { value: "/market", label: "Market" },
-          ]}
-          onChange={(value) => {
-            navigate(value);
-          }}
-          initialValue={path}
-        />
-      </div>
+    <>
+      <div className="px-4 py-8 flex flex-col items-center gap-4 max-w-7xl mx-auto relative z-10">
+        <h1 className="text-3xl font-bold text-white">Galactic Game</h1>
+        <div className="w-full max-w-lg">
+          <ToggleSwitch
+            options={[
+              { value: "/", label: "Leaderboard" },
+              { value: "/market", label: "Market" },
+            ]}
+            onChange={(value) => {
+              navigate(value);
+            }}
+            initialValue={path}
+          />
+        </div>
 
-      {path === "/" && <Lazy loader={() => import("./views/leader-board")} />}
-      {path === "/market" && <Lazy loader={() => import("./views/market")} />}
-    </div>
+        {path === "/" && <Lazy loader={() => import("./views/leader-board")} />}
+        {path === "/market" && <Lazy loader={() => import("./views/market")} />}
+      </div>
+      <div className="clouds z-0 bottom-0 lg:scale-200 lg:translate-y-28 lg:translate-x-56" />
+    </>
   );
 };

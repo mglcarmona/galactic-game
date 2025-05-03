@@ -2,6 +2,7 @@
 @import "tailwindcss";
 
 @theme {
+  --color-main-700: #3d368e;
   --color-main-600: #4c44a5;
   --color-main-500: #675cdb;
   --color-main-400: #8e88e1;
@@ -22,4 +23,38 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.clouds {
+  position: absolute;
+  background-color: var(--color-main-700);
+  width:200px;
+  height: 35px;
+  border-radius:30px;
+  left:-50px;
+  top:-50px;
+  box-shadow: -120px 35px var(--color-main-600), 100px 35px var(--color-main-700), 30px 35px var(--color-main-600), -90px 70px var(--color-main-700), 80px 70px var(--color-main-700), -220px 105px var(--color-main-600), -80px 105px var(--color-main-600), -90px 140px var(--color-main-700), 170px 140px var(--color-main-600), 270px 175px var(--color-main-600), 170px 175px var(--color-main-700), 150px 210px var(--color-main-700), -20px 210px var(--color-main-700), -110px 245px var(--color-main-600),120px 245px var(--color-main-600), 30px 245px var(--color-main-700), 50px 280px var(--color-main-700);
+}
+
+.clouds:before {
+  position: absolute;
+  content:"";
+  background-color: var(--color-yellow-300);
+  border-radius:50%;
+  width:7px;
+  height: 7px;
+  left:-10px;
+  box-shadow: -75px 110px var(--color-yellow-300),-25px 220px var(--color-yellow-300), 230px -10px var(--color-yellow-300), 200px 260px var(--color-yellow-300);
+}
+
+.clouds:after {
+  position: absolute;
+  content:"";
+  background-color: var(--color-yellow-300);
+  border-radius:50%;
+  width:4px;
+  height: 4px;
+  left:30px;
+  top:20px;
+  box-shadow: 100px 300px var(--color-yellow-300), 300px 100px var(--color-yellow-300);
 }
