@@ -17,7 +17,7 @@ export const Th: FunctionComponent<{
   width?: ColumnWidth;
 }> = ({ children, width }) => {
   return (
-    <th scope="col" class="px-6 py-3" style={{ width }}>
+    <th scope="col" class="px-6 py-3" style={{ minWidth: width, width }}>
       {children}
     </th>
   );

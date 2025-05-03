@@ -13,7 +13,7 @@ export const columns: Column[] = [
     name: "Level",
     key: PlayerFields.LEVEL,
     type: ColumnType.Numeric,
-    width: "15%",
+    width: "200px",
     render(data) {
       return `${data[PlayerFields.LEVEL]} ${data[PlayerFields.EMOJI]}`;
     },
